@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact us | Bhekani Abantu Services</title>
+  <meta name="description" content="Request a quote or book a consultant visit. Call 011 760 6669 or email info@basecurity.co.za.">
+  <meta name="theme-color" content="#212121">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="Bhekani Abantu Services" width="460" height="170"></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Our team</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+      <a class="call-btn" href="tel:+27117606669">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+        <span class="call-lbl">Call us</span><span class="call-num">011 760 6669</span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span>
+        <svg class="i-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="quote">
+      <div class="wrap quote-grid">
+        <div class="quote-copy">
+          <h1 class="section-title">Tell us what you need protected</h1>
+          <p>Share your requirements and we will design a solution around them. Prefer a visit? Ask for a consultant and we will come to you.</p>
+          <ul class="contact-list">
+            <li><span>Call</span><a href="tel:+27117606669">011 760 6669</a></li>
+            <li><span>Email</span><a href="mailto:info@basecurity.co.za">info@basecurity.co.za</a></li>
+            <li><span>Visit</span>112 Kingfisher Street, Roodepoort 1725, Gauteng</li>
+            <li><span>Hours</span>Weekdays, 08:00 to 17:00. The control room is open 24/7.</li>
+          </ul>
+          <p class="careers">Looking for work with us? Email your CV to <a href="mailto:info@basecurity.co.za?subject=Employment%20enquiry">info@basecurity.co.za</a> with "Employment enquiry" in the subject line.</p>
+        </div>
+
+        <form class="form" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="quote">
+          <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+          <div class="two">
+            <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
+          </div>
+          <label for="f-service">What do you need?</label>
+          <select id="f-service" name="service">
+            <option>Guarding</option>
+            <option>Armed and medical response</option>
+            <option>Alarms, CCTV and fencing</option>
+            <option>Off-site monitoring</option>
+            <option>Event security</option>
+            <option>Building maintenance</option>
+            <option>A consultant visit</option>
+            <option>Something else</option>
+          </select>
+          <label for="f-msg">Tell us about your site</label>
+          <textarea id="f-msg" name="message" rows="4"></textarea>
+          <button class="btn btn-primary" type="submit">Send request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <div>
+        <p class="foot-brand">Bhekani Abantu Services</p>
+        <p>Serve, protect, maintain.</p>
+        <p>112 Kingfisher Street, Roodepoort 1725<br><a href="tel:+27117606669">011 760 6669</a> &middot; <a href="mailto:info@basecurity.co.za">info@basecurity.co.za</a></p>
+      </div>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="services.html">Services</a>
+        <a href="about.html">About us</a>
+        <a href="team.html">Our team</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.facebook.com/BhekaniAbantu/" rel="noopener">Facebook</a>
+      </nav>
+    </div>
+    <div class="wrap legal">
+      <p>&copy; 2026 Bhekani Abantu Services. This site is a design mock-up prepared by Pablo Lebelo and is not the company's live website.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

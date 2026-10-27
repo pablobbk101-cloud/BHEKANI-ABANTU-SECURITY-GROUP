@@ -1,6 +1,6 @@
 # Bhekani Abantu Services: website mock-up
 
-A design mock-up of a refreshed website for Bhekani Abantu Services (Roodepoort). It is a static site with no build step: `index.html`, `styles.css` and `script.js`.
+A design mock-up of a refreshed website for Bhekani Abantu Services (Roodepoort). It is a static site with no build step. Pages: `index.html` (home), `services.html`, `about.html`, `team.html` and `contact.html`, sharing `styles.css` and `script.js`. Images are in `images/`.
 
 **This is not the company's live site.** It was prepared by Pablo Lebelo as a free proposal.
 
@@ -18,9 +18,8 @@ Connect this repo to Netlify with no build command and the publish directory set
 
 ## Before this goes in front of the client
 
-- Replace the text wordmark in the header with their official logo.
-- Add real photos: a hero photo of the control room or response vehicles, and portraits for the four people in the team section (currently initials).
-- Replace the "PSIRA and SAIDSA affiliated" line with their official logos and registration numbers.
+- The logo, team portraits, vehicle photo and PSIRA/SAIDSA badges were cropped from phone screenshots of their current site, so they are low resolution. Ask the company for the original files.
+- Add their PSIRA registration number.
 - Check every service description against what they currently offer.
 
 ## Content source
