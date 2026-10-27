@@ -245,3 +245,53 @@ h1, h2, h3 { margin: 0; font-family: var(--display); font-stretch: 112%; line-he
   html { scroll-behavior: auto; }
   .board-live i { animation: none; }
 }
+
+/* ---------- Quote buttons and service form pages ---------- */
+.group-btn { margin-top: 20px; }
+.pick { margin-top: 24px; padding: 18px 20px; background: var(--slate-2); border-radius: 10px; }
+.pick p { margin: 0 0 8px; color: #dfe4e7; }
+.pick ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.pick a { color: var(--white); text-underline-offset: 3px; font-weight: 600; }
+
+.qpage { background: var(--chalk); padding: 32px 0 64px; }
+.qpage-grid { display: grid; gap: 28px; }
+.qside { order: 2; }
+.qside h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+.qside ul { margin: 0 0 18px; padding-left: 20px; color: var(--steel); display: grid; gap: 4px; }
+.qside p { color: var(--steel); font-size: 0.95rem; }
+.qside a { color: var(--slate); font-weight: 600; text-underline-offset: 3px; }
+.qpage .form { border: 1px solid var(--line); }
+
+.form-step { font-size: 1.2rem; font-weight: 700; padding-bottom: 10px; margin: 0 0 4px; border-bottom: 3px solid var(--slate); }
+.form-step ~ .form-step { margin-top: 36px; }
+.form .field label { margin: 18px 0 6px; }
+.form .hint { display: block; margin: -2px 0 8px; font-size: 0.86rem; color: var(--steel); }
+.form fieldset { margin: 20px 0 0; padding: 0; border: 0; min-width: 0; }
+.form legend { padding: 0; margin-bottom: 10px; font-weight: 600; font-size: 0.92rem; }
+.form .req { font-weight: 400; color: var(--steel); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.form .chip { display: inline-flex; margin: 0; font-weight: 500; font-size: 0.93rem; cursor: pointer; }
+.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip span { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1.5px solid #9aa4ac; border-radius: 999px; background: var(--white); }
+.chip span::before { content: ""; width: 14px; height: 14px; flex: none; border: 1.5px solid #9aa4ac; border-radius: 4px; background: var(--white); }
+.chip input[type="radio"] + span::before { border-radius: 50%; }
+.chip:hover span { border-color: var(--slate); }
+.chip input:checked + span { border-color: var(--red); background: #fdeeee; color: var(--slate); font-weight: 600; }
+.chip input:checked + span::before { border-color: var(--red); background: var(--red); box-shadow: inset 0 0 0 2px var(--white); }
+.chip input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+.form .invalid input, .form input.invalid, .form fieldset.invalid .chip span { border-color: var(--red); }
+.form-error { margin: 20px 0 0; padding: 12px 14px; border-radius: 8px; background: #fdeeee; color: #8f1314; font-weight: 600; font-size: 0.93rem; }
+
+.sent { background: var(--white); color: var(--slate); border: 1px solid var(--line); border-top: 6px solid var(--go); border-radius: 12px; padding: 28px 24px; }
+.sent h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+.sent p { color: var(--steel); }
+.mock-note { font-size: 0.88rem; padding: 10px 12px; background: var(--chalk); border-radius: 8px; }
+.sent:focus { outline: none; }
+
+@media (min-width: 1000px) {
+  .qpage { padding: 56px 0 88px; }
+  .qpage-grid { grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+  .qside { order: 0; position: sticky; top: 96px; }
+  .group-btn { margin-top: 24px; }
+}
+.qform .two { align-items: end; }
