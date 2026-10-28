@@ -57,7 +57,8 @@
   }
 
   // ---- UI ----
-  var card, target, startBtn;
+  var card, target, startBtn, spot, curStep = 0, raf = 0;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; }
 
   function build() {
@@ -70,6 +71,12 @@
     startBtn.querySelector('button').addEventListener('click', function () { go(1); });
     document.body.insertBefore(startBtn, document.body.firstChild);
 
+    // Spotlight: a ring that follows the highlighted part while the page scrolls
+    spot = el('div', 'tour-spot');
+    spot.setAttribute('aria-hidden', 'true');
+    spot.hidden = true;
+    document.body.appendChild(spot);
+
     card = el('div', 'tour-card');
     card.setAttribute('role', 'dialog');
     card.setAttribute('aria-live', 'polite');
@@ -77,18 +84,53 @@
     card.tabIndex = -1;
     card.hidden = true;
     card.innerHTML =
-      '<div class="tour-top"><span class="tour-count"></span>' +
-      '<button type="button" class="tour-x" aria-label="End tour">&times;</button></div>' +
+      '<div class="tour-top">' +
+        '<span class="tour-count"></span>' +
+        '<span class="tour-tools">' +
+          '<button type="button" class="tour-min" aria-expanded="true" aria-label="Hide tour card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>' +
+          '<button type="button" class="tour-x" aria-label="End tour"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
+        '</span>' +
+      '</div>' +
       '<div class="tour-bar"><i></i></div>' +
-      '<h2 class="tour-title"></h2><p class="tour-text"></p>' +
-      '<div class="tour-nav"><button type="button" class="btn tour-back">Back</button>' +
-      '<button type="button" class="btn btn-primary tour-next">Next</button></div>';
+      '<div class="tour-body"><h2 class="tour-title"></h2><p class="tour-text"></p>' +
+      '<p class="tour-hint">Scroll the page to see all of it.</p></div>' +
+      '<div class="tour-nav"><button type="button" class="tour-back">Back</button>' +
+      '<button type="button" class="tour-next">Next</button></div>';
     document.body.appendChild(card);
     card.querySelector('.tour-x').addEventListener('click', end);
+    card.querySelector('.tour-min').addEventListener('click', function () { setMin(!card.classList.contains('min')); });
+    card.querySelector('.tour-count').addEventListener('click', function () { if (card.classList.contains('min')) setMin(false); });
     document.addEventListener('keydown', function (e) {
       if (card.hidden) return;
       if (e.key === 'Escape') end();
+      if (e.key === 'ArrowRight') card.querySelector('.tour-next').click();
+      if (e.key === 'ArrowLeft' && curStep > 1) go(curStep - 1);
     });
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+  }
+
+  function setMin(min) {
+    card.classList.toggle('min', min);
+    var b = card.querySelector('.tour-min');
+    b.setAttribute('aria-expanded', String(!min));
+    b.setAttribute('aria-label', min ? 'Show tour card' : 'Hide tour card');
+    pad();
+  }
+
+  // Keep room under the page so the card never hides the bottom of the content
+  function pad() {
+    document.body.style.paddingBottom = card.hidden ? '' : (card.offsetHeight + 24) + 'px';
+  }
+
+  function queue() { if (!raf && target) raf = requestAnimationFrame(place); }
+  function place() {
+    raf = 0;
+    if (!target) return;
+    var r = target.getBoundingClientRect(), g = 8;
+    spot.style.transform = 'translate(' + (r.left - g) + 'px,' + (r.top - g) + 'px)';
+    spot.style.width = (r.width + g * 2) + 'px';
+    spot.style.height = (r.height + g * 2) + 'px';
   }
 
   function setMenu(open) {
@@ -100,7 +142,6 @@
   }
 
   function clear() {
-    if (target) target.classList.remove('tour-target');
     target = null;
     setMenu(false);
   }
@@ -108,20 +149,20 @@
   function show(n) {
     var s = STEPS[n - 1];
     clear();
+    curStep = n;
     if (s.menu) setMenu(true);
     target = document.querySelector(s.sel);
     if (!target) { return n < STEPS.length ? go(n + 1) : end(); }
-    target.classList.add('tour-target');
     document.documentElement.classList.add('touring');
     startBtn.hidden = true;
 
-    if (!s.menu && !target.closest('.site-header')) {
-      target.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-    } else {
-      window.scrollTo({ top: 0 });
-    }
+    var inHeader = !!target.closest('.site-header');
+    spot.classList.toggle('over-header', inHeader);
+    spot.hidden = false;
 
+    // Fill the card, with a quick fade between steps
     card.hidden = false;
+    card.classList.remove('swap'); void card.offsetWidth; card.classList.add('swap');
     card.querySelector('.tour-count').textContent = 'Step ' + n + ' of ' + STEPS.length;
     card.querySelector('.tour-bar i').style.width = (n / STEPS.length * 100) + '%';
     card.querySelector('.tour-title').textContent = s.title;
@@ -132,15 +173,30 @@
     back.onclick = function () { go(n - 1); };
     next.textContent = s.last ? 'Finish' : (STEPS[n] && !samePage(STEPS[n].page) ? 'Next page' : 'Next');
     next.onclick = function () { s.last ? end() : go(n + 1); };
+    pad();
+
+    // Scroll so the part sits just below the header, then let the person scroll freely
+    var header = document.querySelector('.site-header');
+    var top = inHeader ? 0 : target.getBoundingClientRect().top + window.scrollY - (header ? header.offsetHeight : 0) - 20;
+    var room = window.innerHeight - (header ? header.offsetHeight : 0) - card.offsetHeight - 40;
+    card.querySelector('.tour-hint').hidden = inHeader || target.offsetHeight <= room;
+    spot.classList.add('moving');
+    window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+    setTimeout(function () { spot.classList.remove('moving'); }, 450);
+    place();
     card.focus({ preventScroll: true });
     history.replaceState(null, '', location.pathname + '?tour=' + n + location.hash);
   }
 
   function end() {
     clear();
+    curStep = 0;
     card.hidden = true;
+    spot.hidden = true;
+    card.classList.remove('min');
     startBtn.hidden = false;
     document.documentElement.classList.remove('touring');
+    pad();
     history.replaceState(null, '', location.pathname + location.hash);
   }
 
