@@ -61,10 +61,14 @@
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; }
 
   function build() {
-    startBtn = el('button', 'tour-start', 'Take the tour');
-    startBtn.type = 'button';
-    startBtn.addEventListener('click', function () { go(1); });
-    document.body.appendChild(startBtn);
+    // Strip at the very top of every page with the tour button
+    startBtn = el('div', 'tour-strip');
+    startBtn.setAttribute('role', 'region');
+    startBtn.setAttribute('aria-label', 'Website preview');
+    startBtn.innerHTML = '<div class="wrap tour-strip-row"><p>New website preview</p>' +
+      '<button type="button" class="tour-start">Take the tour</button></div>';
+    startBtn.querySelector('button').addEventListener('click', function () { go(1); });
+    document.body.insertBefore(startBtn, document.body.firstChild);
 
     card = el('div', 'tour-card');
     card.setAttribute('role', 'dialog');

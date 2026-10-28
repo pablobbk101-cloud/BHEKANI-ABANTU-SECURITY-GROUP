@@ -319,10 +319,13 @@ h1, h2, h3 { margin: 0; font-family: var(--display); font-stretch: 112%; line-he
 }
 
 /* ---------- Guided tour ---------- */
-.tour-start { position: fixed; right: 16px; bottom: 16px; z-index: 40; min-height: 48px; padding: 0 20px; border: 0; border-radius: 999px; background: var(--slate); color: var(--white); font: 600 0.95rem var(--body); box-shadow: 0 6px 20px rgba(0,0,0,.25); cursor: pointer; }
-.tour-start::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 10px; border-radius: 50%; background: var(--red); vertical-align: 1px; }
-.tour-start:hover { background: #000; }
-.tour-start[hidden] { display: none; }
+.tour-strip { background: var(--red); color: var(--white); }
+.tour-strip[hidden] { display: none; }
+.tour-strip-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding-block: 6px; }
+.tour-strip p { margin: 0; font-weight: 600; font-size: 0.95rem; }
+.tour-start { flex: none; min-height: 40px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--white); color: var(--red-dark); font: 700 0.95rem var(--body); cursor: pointer; }
+.tour-start::after { content: ""; display: inline-block; margin-left: 10px; border-left: 7px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; vertical-align: 0; }
+.tour-start:hover { background: var(--chalk); }
 
 .tour-target { position: relative; z-index: 30; scroll-margin-top: 84px; border-radius: 10px; outline: 3px solid var(--focus); outline-offset: 6px; box-shadow: 0 0 0 9999px rgba(15, 18, 20, .6); }
 .site-header .tour-target { box-shadow: 0 0 0 9999px rgba(15, 18, 20, .6); }
@@ -345,7 +348,6 @@ h1, h2, h3 { margin: 0; font-family: var(--display); font-stretch: 112%; line-he
 
 @media (min-width: 720px) {
   .tour-card { left: auto; right: 24px; bottom: 24px; width: 380px; padding: 20px 22px 22px; }
-  .tour-start { right: 24px; bottom: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .tour-bar i { transition: none; } }
 .tour-card:focus { outline: none; }
