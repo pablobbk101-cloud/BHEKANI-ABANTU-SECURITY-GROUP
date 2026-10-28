@@ -12,6 +12,14 @@ Open `index.html` in a browser, or serve the folder:
 python3 -m http.server 8000
 ```
 
+## Guided tour
+
+`tour.js` adds a "Take the tour" button to every page. It walks through the home page, the menu, each service page, the quote forms, About us, Our team and Contact, moving between pages automatically. To send someone a link that starts the tour straight away, add `?tour=1` to the address:
+
+https://bhekani-abantu-security-group.pablobbk101.workers.dev/?tour=1
+
+Edit the `STEPS` list at the top of `tour.js` to change the wording or order.
+
 ## Forms
 
 The forms check required answers and then show a confirmation, but **nothing is sent** because this is a mock-up. Before going live, point them at a form backend (for example a Cloudflare Worker that emails info@basecurity.co.za, or a service such as Formspree) and remove the `e.preventDefault()` confirmation logic in `script.js`.
