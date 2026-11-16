@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#212121">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -39,50 +39,69 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1>Armed and medical response, staffed around the clock</h1>
-          <p class="lead">Our manned control room is open 24 hours a day and sends armed response and medical assistance when you need it. We also guard sites, install alarms and electric fencing, and look after your buildings.</p>
+          <h1>Armed and medical response, <em>24/7</em></h1>
+          <p class="lead">Guards, alarms, CCTV and building maintenance from one Roodepoort company.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="tel:+27117606669">Call 011 760 6669</a>
             <a class="btn btn-ghost" href="contact.html">Request a quote</a>
           </div>
         </div>
-        <aside class="board" aria-label="What the control room covers">
-          <div class="board-head">
-            <span class="board-title">Control room</span>
-            <span class="board-live"><i aria-hidden="true"></i> Open 24/7</span>
-          </div>
-          <ul class="board-rows">
-            <li><div><strong>Armed response</strong><span>Deployed from the control room</span></div><em>On standby</em></li>
-            <li><div><strong>Medical assist</strong><span>Deployed from the control room</span></div><em>On standby</em></li>
-            <li><div><strong>CCTV and alarm monitoring</strong><span>On-site and off-site</span></div><em>On standby</em></li>
-            <li><div><strong>Vehicle recovery</strong><span>A team is sent to recover your vehicle</span></div><em>On standby</em></li>
-          </ul>
-        </aside>
+        <figure class="hero-photo">
+          <img src="images/tactical-response.jpg" alt="Bhekani Abantu tactical response vehicle with armed officers on a training range" width="1080" height="809" fetchpriority="high">
+        </figure>
+      </div>
+    </section>
+
+    <section class="board" aria-label="What the control room covers">
+      <div class="wrap board-grid">
+        <div class="board-head">
+          <h2 class="board-title">Control room</h2>
+          <p class="board-live">Manned 24 hours a day</p>
+          <p class="board-clock">Roodepoort time <time id="clock">--:--</time></p>
+        </div>
+        <ul class="board-rows">
+          <li><strong>Armed response</strong><span>Sent from the control room</span></li>
+          <li><strong>Medical assist</strong><span>Sent from the control room</span></li>
+          <li><strong>CCTV and alarm monitoring</strong><span>On-site and off-site</span></li>
+          <li><strong>Vehicle recovery</strong><span>A team is sent to recover your vehicle</span></li>
+        </ul>
       </div>
     </section>
 
     <section class="trust" aria-label="Accreditation">
-      <div class="wrap trust-row">
-        <p><strong>100% South African</strong> owned and operated, serving commercial, residential, industrial and corporate clients.</p>
-        <img src="images/psira-saidsa.jpg" alt="Registered with PSIRA, the Private Security Industry Regulatory Authority, and a member of SAIDSA" width="889" height="269">
+      <div class="wrap trust-grid">
+        <p class="trust-claim"><strong>100% South African</strong> owned and operated</p>
+        <ul class="sectors" aria-label="Sectors we serve">
+          <li>Commercial</li>
+          <li>Residential</li>
+          <li>Industrial</li>
+          <li>Corporate</li>
+        </ul>
+        <img class="badge" src="images/psira-saidsa.jpg" alt="Registered with PSIRA, the Private Security Industry Regulatory Authority, and a member of SAIDSA" width="889" height="269">
       </div>
     </section>
 
     <section class="overview">
-      <div class="wrap overview-grid">
+      <div class="wrap">
+        <h2 class="section-title">What we do</h2>
+        <p class="section-intro">Security, technical and maintenance services from one company, so there are fewer gaps in your protection and fewer suppliers to chase.</p>
+        <ul class="links">
+          <li><a href="service-guarding.html"><strong>Guarding and response</strong><span>Guards, armed and medical response, VIP protection and events</span></a></li>
+          <li><a href="service-technical.html"><strong>Alarms, CCTV and fencing</strong><span>Installation, off-site monitoring, access control and gates</span></a></li>
+          <li><a href="service-risk.html"><strong>Risk and cash services</strong><span>Risk analysis, investigations and cash in transit</span></a></li>
+          <li><a href="service-maintenance.html"><strong>Building maintenance</strong><span>Repairs, cleaning, pest control and grounds</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="teaser">
+      <div class="wrap teaser-grid">
+        <h2 class="section-title">Two providers, one company</h2>
         <div>
-          <h2 class="section-title">What we do</h2>
-          <p class="section-intro">Security, technical and maintenance services from one company, so there are fewer gaps in your protection and fewer suppliers to chase.</p>
-          <ul class="links">
-            <li><a href="service-guarding.html"><strong>Guarding and response</strong><span>Guards, armed and medical response, VIP protection and events</span></a></li>
-            <li><a href="service-technical.html"><strong>Alarms, CCTV and fencing</strong><span>Installation, off-site monitoring, access control and gates</span></a></li>
-            <li><a href="service-risk.html"><strong>Risk and cash services</strong><span>Risk analysis, investigations and cash in transit</span></a></li>
-            <li><a href="service-maintenance.html"><strong>Building maintenance</strong><span>Repairs, cleaning, pest control and grounds</span></a></li>
-          </ul>
+          <p>Bhekani Abantu Services was formed when Bhekani and Protection Services combined their strengths. We design a solution around your requirements rather than sell you a fixed package.</p>
+          <p class="pull">Caring is not a marketing strategy, it's what we do.</p>
+          <a class="btn btn-light" href="about.html">About us</a>
         </div>
-        <figure class="photo">
-          <img src="images/tactical-response.jpg" alt="Bhekani Abantu tactical response vehicle with armed officers on a training range" width="1080" height="809" loading="lazy">
-        </figure>
       </div>
     </section>
 
@@ -101,7 +120,7 @@
       <div>
         <p class="foot-brand">Bhekani Abantu Services</p>
         <p>Serve, protect, maintain.</p>
-        <p>112 Kingfisher Street, Roodepoort 1725<br><a href="tel:+27117606669">011 760 6669</a> &middot; <a href="mailto:info@basecurity.co.za">info@basecurity.co.za</a></p>
+        <p>112 Kingfisher Street, Roodepoort 1725<br><a href="tel:+27117606669">011 760 6669</a><br><a href="mailto:info@basecurity.co.za">info@basecurity.co.za</a></p>
       </div>
       <nav class="foot-nav" aria-label="Footer">
         <a href="services.html">Services</a>

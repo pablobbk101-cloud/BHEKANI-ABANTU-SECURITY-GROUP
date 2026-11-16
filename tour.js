@@ -10,7 +10,7 @@
     { page: 'index.html', sel: '#site-nav', menu: true, title: 'Simple menu',
       text: 'Every section has its own page: Home, Services, About us, Our team and Contact. On phones this opens as a dropdown, and the page you are on is marked in red.' },
     { page: 'index.html', sel: '.board', title: 'Your 24/7 control room',
-      text: 'Visitors see straight away that armed response, medical assist, monitoring and vehicle recovery are always on standby.' },
+      text: 'Visitors see straight away that armed response, medical assist, monitoring and vehicle recovery are covered by a control room that is manned around the clock.' },
     { page: 'index.html', sel: '.trust', title: 'Trust and accreditation',
       text: 'Your PSIRA registration and SAIDSA membership are shown on the home page, where new clients look for them.' },
     { page: 'index.html', sel: '.links', title: 'What we do',

@@ -51,3 +51,14 @@
     });
   });
 })();
+
+// Control room clock (Roodepoort time). Shows seconds unless the visitor prefers reduced motion.
+(function () {
+  var out = document.getElementById('clock');
+  if (!out) return;
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fmt = new Intl.DateTimeFormat('en-ZA', { timeZone: 'Africa/Johannesburg', hour: '2-digit', minute: '2-digit', second: calm ? undefined : '2-digit', hour12: false });
+  function tick() { out.textContent = fmt.format(new Date()); }
+  tick();
+  setInterval(tick, calm ? 30000 : 1000);
+})();
